@@ -5,10 +5,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <cassert>
+#include <stdexcept>
 #include <iostream>
 #include <cmath>
 
-//#include <GL/glew.h>
+#include <glew.h>
+#include <glm/glm.hpp>
+#include <glfw3.h>
+
 
 //Name spaces...
 
