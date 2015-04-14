@@ -24,4 +24,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Basic_Vertex_Shader.vertexshader">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="BasicFragmentShader.fragmentshader">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
