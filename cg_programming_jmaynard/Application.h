@@ -12,7 +12,9 @@
 #include <cassert>
 #include <stdexcept>
 #include <iostream>
+#include <fstream>
 #include <cmath>
+#include <string>
 
 
 
