@@ -5,4 +5,5 @@ in vec3 model_space_pos;
 
 void main() {
 	gl_Position = vec4(model_space_pos, 1);
+
 }

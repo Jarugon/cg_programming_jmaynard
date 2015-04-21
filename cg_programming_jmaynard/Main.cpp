@@ -135,8 +135,10 @@ GLuint LoadShaders(const char *vertex_file_path, const char *fragment_file_path)
 }
 
 
+
 GLuint& LoadTriangle() {
 	static const GLfloat g_vertex_buffer_data[] = {
+
 	-1.0f,-1.0f, 0.0f,
 		1.0f,-1.0f, 0.0f,
 		0.0f, 1.0f, 0.0f
@@ -150,7 +152,7 @@ GLuint& LoadTriangle() {
 	return vertexBuffer;
 }
 
-void RenderTriangle(GLuint vertexBuffer) {
+void RenderVertex(GLuint vertexBuffer) {
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 
@@ -163,9 +165,51 @@ void RenderTriangle(GLuint vertexBuffer) {
 		(void*)0	//Array Buffer offset...
 		);
 
+	
+
+}
+
+void RenderTriangle(GLuint vertexBuffer) {
+	RenderVertex(vertexBuffer);
+
+
+
 	glDrawArrays(GL_TRIANGLES, 0 , 3);
 	glDisableVertexAttribArray(0);
 
+}
+void RenderQuad(GLuint vertexBuffer) {
+	RenderVertex(vertexBuffer);
+
+
+
+	glDrawArrays(GL_TRIANGLES, 0 , 6);
+	glDisableVertexAttribArray(0);
+
+}
+GLuint& LoadQuad() {
+	static GLfloat g_vertex_buffer_data[] = {
+
+	0.0f,0.0f,0.0f,
+	1.0f,0.0f,0.0f,
+	1.0f,1.0f,1.0f,
+	0.0f,0.0f,0.0f,
+	1.0f,1.0f,0.0f,
+	0.0f,1.0f,0.0f
+
+	};
+
+	for(int i = 0, size = 18; i < size; ++i) {
+		g_vertex_buffer_data[i] -= 0.5;
+
+	}
+
+	GLuint vertexBuffer = 0;
+	glGenBuffers(1,&vertexBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+
+	return vertexBuffer;
 }
 
 
@@ -182,11 +226,13 @@ int main() {
 	GLuint programID = LoadShaders("Basic_Vertex_Shader.vertexshader", "BasicFragmentShader.fragmentshader");
 
 	GLuint triangleID = LoadTriangle();
+	GLuint QuadID = LoadQuad();
 
 	do{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(programID);
-		RenderTriangle(triangleID);
+		//RenderTriangle(triangleID);
+		RenderQuad(QuadID);
 
 		//Update();
 		//Render();

@@ -5,5 +5,5 @@ out vec3 color;
 
 void main() {
 	// output color = purple
-	color = vec3(0.5,0,0.5);
+	color = vec3(gl_FragCoord);
 }
