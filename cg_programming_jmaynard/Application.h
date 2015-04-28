@@ -4,6 +4,9 @@
 #include <GL/glew.h>
 #include <glfw3.h>
 #include <glm/glm.hpp>
+#include "glm/gtc/matrix_transform.hpp"
+
+
 
 
 #include <stdio.h>
@@ -34,6 +37,9 @@ using namespace glm;
 #define ANTIALIASING 4
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
+#define FIELD_OF_VIEW 45.0f
+#define Z_NEAR 0.1f
+#define Z_FAR 100.0f
 #define GLFW_FAIL 0
 
 extern GLFWwindow* window;
